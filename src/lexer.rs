@@ -107,7 +107,7 @@ mod tests {
         let ts = l.scan();
         assert_eq!(ts, [Token::EmptySet]);
     }
-    
+
     #[test]
     fn is_escaped_empty_set() {
         let mut l: Lexer = Lexer::new(r#"\\0"#);
@@ -175,13 +175,13 @@ mod tests {
     fn regex_with_trailing_backslash() {
         let mut l: Lexer = Lexer::new(r#"a*b|cd0\"#);
         let ts = l.scan();
-        assert_eq!(ts, [Token::Literal('a'), 
-                        Token::Kleene, 
-                        Token::Literal('b'), 
-                        Token::Alternation, 
-                        Token::Literal('c'), 
-                        Token::Literal('d'), 
-                        Token::Literal('0'), 
+        assert_eq!(ts, [Token::Literal('a'),
+                        Token::Kleene,
+                        Token::Literal('b'),
+                        Token::Alternation,
+                        Token::Literal('c'),
+                        Token::Literal('d'),
+                        Token::Literal('0'),
                         Token::Literal('\\')]);
     }
 
