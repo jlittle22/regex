@@ -189,7 +189,9 @@ mod tests {
     fn regex_empty_set_or_empty_string() {
         let mut l: Lexer = Lexer::new(r#"\0|$"#);
         let ts = l.scan();
-        assert_eq!(ts, [Token::EmptySet, Token::Alternation, Token::EmptyString]);
+        assert_eq!(ts, [Token::EmptySet,
+                        Token::Alternation,
+                        Token::EmptyString]);
     }
 
     #[test]
