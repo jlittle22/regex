@@ -46,5 +46,5 @@ impl Parser {
   *
   *     RS*   ==  R(S*)    (Kleene has higher precedence than concatenation.)
   *
-  *     RS|A  ==  (RS)|A   (Concatenation has higher precendence than alternation.)
+  *     RS|A  ==  (RS)|A   (Concatenation has higher precedence than alternation.)
   */
