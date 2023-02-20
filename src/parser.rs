@@ -21,7 +21,7 @@ impl Parser {
  * Barebones Regex CFG
  *
  * REGEX -> <TERMINAL> or <REGEX><REGEX> or <REGEX>|<REGEX> or <REGEX>* or <OpenParen><REGEX><CloseParen>
- * TERMINAL -> <EmptyString> | <EmptySet> | <CHAR>
+ * TERMINAL -> <EmptyString> or <EmptySet> or <CHAR>
  * CHAR  -> { c | c in ASCII256, c != whitespace }
  *
  *
