@@ -22,7 +22,6 @@ There are two basic parsing styles we could pursue.
 2. Bottom-up: Accumulates context from the sequence of tokens until a valid CFG
    derivation is found.
 
-
 */
 
 
@@ -54,17 +53,20 @@ impl Parser {
  * (<REGEX> is the goal symbol.)
  *
  * <REGEX>           := <LOW_PRECEDENCE>
- * <LOW_PRECEDENCE>  := <MED_PRECEDENCE>|<MED_PRECEDENCE> or <MED_PRECEDENCE>
- * <MED_PRECEDENCE>  := <HIGH_PRECEDENCE><HIGH_PRECEDENCE> or <HIGH_PRECEDENCE>
- * <HIGH_PRECEDENCE> := <GIGA_PRECEDENCE>* or <GIGA_PRECEDENCE>
+ * <LOW_PRECEDENCE>  := <MED_PRECEDENCE><ALTERNAT>
+ * <ALTERNAT>        := |<LOW_PRECEDENCE> or EmptyString
+ * <MED_PRECEDENCE>  := <HIGH_PRECEDENCE><CONCAT>
+ * <CONCAT>          := <MED_PRECEDENCE> or EmptyString
+ * <HIGH_PRECEDENCE> := <GIGA_PRECEDENCE><KLEENE>
+ * <KLEENE>          := * or EmptyString
  * <GIGA_PRECEDENCE> := OpenParen<LOW_PRECEDENCE>CloseParen or <TERMINAL>
  * <TERMINAL>        := EmptyString or EmptySet or <CHAR>
  * <CHAR>            := { c | c in ASCII256, c != whitespace }
  *
+ *
  * Note: Consider defining some kind of WORD symbol to implicitly concatenate
  *       adjacent chars. E.g. the regex `jake` would be a terminal symbol rather
  *       than a concatenation of four CHAR regular expressions.
- *
  */
 
  /**
